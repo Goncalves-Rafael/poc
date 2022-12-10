@@ -142,9 +142,14 @@ const sha256 = async (message) => {
 }
 
 const handleSeedOriginChange = (element) => {
+  document.getElementById('loteria_label').classList.add('display-none');
   if(element.value === 'user'){
     document.getElementById('seed_label').classList.remove('display-none');
     document.getElementById('timeSeed').classList.add('display-none');
+  } else if (element.value === 'megasena') {
+    document.getElementById('timeSeed').classList.add('display-none');
+    document.getElementById('seed_label').classList.add('display-none');
+    document.getElementById('loteria_label').classList.remove('display-none');
   } else {
     document.getElementById('seed_label').classList.add('display-none');
     document.getElementById('timeSeed').classList.remove('display-none');

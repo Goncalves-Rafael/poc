@@ -12,11 +12,12 @@
     <div class="container">
       <div class="data divisory">
         <form class="form">
-          <p class="ta-center">Escolha a origem da semente que será usada no sorteio</p>
+          <p class="ta-center">Escolha o método que será utilizado:</p>
           <select id="seedOrigin" onchange="handleSeedOriginChange(this)">
             <option value="nist" selected>Farol de aleatoriedade - NIST</option>
             <option value="uchile">Farol de aleatoriedade - Universidade do Chile</option>
             <option value="inmetro">Farol de aleatoriedade - INMETRO</option>
+            <option value="megasena">Tabular Hashing - Utilizando último resultado da Megasena</option>
             <option value="user">Inserir manualmente</option>
           </select>
           <label for="seed" id="seed_label" class="seed_label display-none">
@@ -44,11 +45,13 @@
               <span id="timeError" class="timeError display-none">Não é possível utilizar um horário do futuro</span>
             </div>
           </div>
+          <div id="loteria_label" class="display-none">
+          </div>
           <p class="ta-center">
             Digite ou copie os itens abaixo, cada um em uma linha
           </p>
           <textarea id="items" class="items_input" class="m-auto border"></textarea>
-          <button type="button" onclick="shuffle()" id="submit" class="shuffle border">Sortear</button>
+          <button type="button" id="draw_button" class="shuffle border">Sortear</button>
           <div id="formatedData" class="formated-data display-none">
             <table class="formated-data-table">
               <thead>
@@ -68,10 +71,10 @@
           <br>
           Sorteio em <span id="remainingTime"></span> segundos.
         </p>
-        <p class="seed m-auto">Semente utilizada: <b id="baseSeed" style="word-break: break-all;"></b></p>
+        <!-- <p class="seed m-auto">Semente utilizada: <b id="baseSeed" style="word-break: break-all;"></b></p> -->
         <p id="pulse" class="display-none pulseIndex">Index do pulso: <b id="pulseIndex"></b></p>
         <div class="result-list-div ta-center" >
-          <p style="font-size: 22px;">Resultado do sorteio</p>
+          <p style="font-size: 22px;">Resultado</p>
           <ol id="resultList" class="ta-left results-list display-none">
           </ol>
         </div>
